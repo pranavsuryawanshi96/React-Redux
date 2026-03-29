@@ -2,6 +2,8 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodItems from "./components/FoodItems";
 import ErrorMessage from "./components/ErrorMessage";
+import Container from "./components/Container";
+import FoodInput from "./components/FoodInput";
 function App() {
   let foodItems = ["Apple", "Green Vegetable", "Milk", "Sprouts"];
   // one method conditional
@@ -15,9 +17,16 @@ function App() {
     // <React.Fragment>
     // another method mostly used
     <>
-      <h1 className="food-heading">Healthy Food</h1>
-      <ErrorMessage item={foodItems}></ErrorMessage>
-      <FoodItems item={foodItems}></FoodItems>
+      <Container>
+        <h1 className="food-heading">Healthy Food</h1>
+        <ErrorMessage item={foodItems}></ErrorMessage>
+        <FoodInput></FoodInput>
+        <FoodItems item={foodItems}></FoodItems>
+      </Container>
+
+      {/* <Container>
+        <p>The above list contains healthy foods.</p>
+      </Container> */}
     </>
   );
 }
