@@ -17,6 +17,11 @@ function App() {
 
   const onKeyDown = (event) => {
     if (event.key === "Enter") {
+      const enterItem = event.target.value;
+      if (enterItem === "") {
+        alert("Please enter a food item");
+        return;
+      }
       let newFoodItem = event.target.value;
       // after writing text on input should be cleared
       event.target.value = "";
