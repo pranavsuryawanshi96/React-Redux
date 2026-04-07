@@ -1,11 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-function AddToDo({ onNewItem }) {
+function AddToDo() {
   // const [todoName, setTodoName] = useState("");
   // const [dueDate, setDueDate] = useState("");
   // use the useRef hook to store the current value of the todoName and dueDate variables, and update them in the handleNameChange and
   //  functions. This way, we can avoid unnecessary re-renders of the component when the user types in the input fields.
   // we are using this ref in jsx to get current value by the user
+
+  // use the context api to get the todoItems from the context and use it in the component. This way, we can avoid passing the todoItems as props from the parent component to the child component.
+  const { addNewItem } = useContext(TodoItemsContext);
   const todoNameElement = useRef();
   const dueDateElement = useRef();
 
@@ -27,7 +31,7 @@ function AddToDo({ onNewItem }) {
       alert("Please enter both name and due date");
       return;
     }
-    onNewItem(todoName, dueDate);
+    addNewItem(todoName, dueDate);
     // setDueDate("");
     // setTodoName("");
   };
