@@ -19,7 +19,9 @@ function Post({ post }) {
           </span>
         ))}
         <div className="alert alert-success reactions" role="alert">
-          This post has been reacted by {post.reactions} people
+          This post has been reacted by
+          {/* from api getting likes and dislike so app is crashing so for this we can add together */}
+          {post.reactions.likes + post.reactions.dislikes} people
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const postListReducer = (currPostList, action) => {
   }
   return newPostList;
 };
-
+// Create Provider
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
