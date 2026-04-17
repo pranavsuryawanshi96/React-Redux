@@ -22,9 +22,24 @@ function CreatePost() {
     reactionsEl.current.value = "";
     tagsEl.current.value = "";
 
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: postTitle,
+        body: postBody,
+        reactions: reactions,
+        userId: userId,
+        tags: tags,
+      }),
+    })
+      .then((res) => res.json())
+      .then((resObj) => {
+        addPost(resObj);
+      });
+
     //  we have pass to addpost this data
-    addPost(userId, postTitle, postBody, reactions, tags);
-    alert("Post is posted ");
+    // addPost(userId, postTitle, postBody, reactions, tags);
   };
   return (
     <form className="create-post" onSubmit={handleSubmit}>
