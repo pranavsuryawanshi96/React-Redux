@@ -1,4 +1,6 @@
-const Sidebar = ({ selectedTab, setSelectedTab }) => { 
+import { Link } from "react-router-dom";
+
+const Sidebar = () => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
@@ -20,16 +22,12 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li
-          className="nav-item"
-          onClick={() => {
-            setSelectedTab("Home");
-          }}
-        >
-          <a
-            href="#"
+        <li className="nav-item">
+          {/*  we have to use Link instead of anchor tag by this again api is loading on post list */}
+          <Link
+            to="/"
             // if the tab is selected is home then it will active blue  bvg
-            className={`nav-link text-white ${selectedTab === "Home" && "active"}`}
+            className="nav-link text-white"
             aria-current="page"
           >
             <svg
@@ -41,17 +39,10 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
               <use xlinkHref="#home"></use>
             </svg>
             Home
-          </a>
+          </Link>
         </li>
-        <li
-          onClick={() => {
-            setSelectedTab("Create Post");
-          }}
-        >
-          <a
-            href="#"
-            className={`nav-link text-white ${selectedTab === "Create Post" && "active"}`}
-          >
+        <li>
+          <Link to="/create-post" className="nav-link text-white">
             <svg
               className="bi pe-none me-2"
               width="16"
@@ -61,7 +52,7 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
               <use xlinkHref="#speedometer2"></use>
             </svg>
             Create Post
-          </a>
+          </Link>
         </li>
       </ul>
       <hr />

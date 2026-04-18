@@ -1,8 +1,11 @@
 import React, { useContext, useRef } from "react";
 import { PostList } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   const { addPost } = useContext(PostList);
+  const navigate = useNavigate();
+
   const userIdEl = useRef();
   const postTitleEl = useRef();
   const postBodyEl = useRef();
@@ -37,6 +40,8 @@ function CreatePost() {
       .then((resObj) => {
         addPost(resObj);
       });
+    //  after post user move to home
+    navigate("/");
 
     //  we have pass to addpost this data
     // addPost(userId, postTitle, postBody, reactions, tags);
