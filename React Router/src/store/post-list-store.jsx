@@ -2,7 +2,6 @@ import { createContext, useEffect, useReducer, useState } from "react";
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
-  fetching: false,
   deletePost: () => {},
 });
 
@@ -22,24 +21,25 @@ const postListReducer = (currPostList, action) => {
 // Create Provider
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const [fetching, setFetching] = useState(false);
+  // const [fetching, setFetching] = useState(false);
   // fetch from api
-  useEffect(() => {
-    setFetching(true);
+  // for now commenting this code because we are using loader for fetching data
+  // useEffect(() => {
+  //   setFetching(true);
 
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
-    //  to clean  up the useEffect process if user moves to another page then cleanup from memory
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
+  //   fetch("https://dummyjson.com/posts", { signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitialPosts(data.posts);
+  //       setFetching(false);
+  //     });
+  //   //  to clean  up the useEffect process if user moves to another page then cleanup from memory
+  //   return () => {
+  //     controller.abort();
+  //   };
+  // }, []);
 
   const addPost = (post) => {
     if (!post) {
@@ -73,7 +73,7 @@ const PostListProvider = ({ children }) => {
   };
 
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost, fetching }}>
+    <PostList.Provider value={{ postList, addPost, deletePost, }}>
       {children}
     </PostList.Provider>
   );
