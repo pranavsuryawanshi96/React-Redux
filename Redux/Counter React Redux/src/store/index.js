@@ -3,7 +3,7 @@ const INITIAL_VALUE = {
   counter: 0,
   privacy: false,
 };
-//  second  create the reducer
+//  second  create the reducer createStore req reducer
 const counterReducer = (store = INITIAL_VALUE, action) => {
   // ...store is the current value is that store first
   if (action.type === "INCREMENT") {
